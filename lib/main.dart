@@ -228,7 +228,14 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final _form = GlobalKey<FormState>();
-  bool confirmed = false;XFile? profilePhoto;
+  bool confirmed = false;
+XFile? profilePhoto;
+
+final nameController = TextEditingController();
+final phoneController = TextEditingController();
+final locationController = TextEditingController();
+final experienceController = TextEditingController();
+final serviceController = TextEditingController();
 Future<void> _pickPhoto() async {
   final picker = ImagePicker();
   final picked = await picker.pickImage(source: ImageSource.gallery);
@@ -248,11 +255,13 @@ Future<void> _pickPhoto() async {
           children: [
             const Text('നിങ്ങളുടെ വിവരങ്ങൾ നൽകുക', style: TextStyle(fontSize: 21, fontWeight: FontWeight.bold)),
             const SizedBox(height: 16),
-            _field('പേര്', Icons.person),
-            _field('ഫോൺ നമ്പർ', Icons.phone, keyboard: TextInputType.phone),
-            _field('സ്ഥലം', Icons.location_on),
-            _field('എത്ര വർഷത്തെ പരിചയം?', Icons.work, keyboard: TextInputType.number),
-            _field('ചെയ്യുന്ന സേവനങ്ങൾ', Icons.handyman, maxLines: 3),
+            _field('പേര്', Icons.person, nameController),
+            _field('ഫോൺ നമ്പർ', Icons.phone, phoneController, keyboard:
+TextInputType.phone),
+            _field('സ്ഥലം', Icons.location_on, locationController),
+            _field('എത്ര വർഷത്തെ പരിചയം?', Icons.work, experienceController, keyboard:
+TextInputType.number),
+            _field('ചെയ്യുന്ന സേവനങ്ങൾ', Icons.handyman, serviceController, maxLines: 3),
             const SizedBox(height: 8),
             OutlinedButton.icon(onPressed: _pickPhoto, icon: const Icon(Icons.photo_camera), label: const Text('Profile Photo ചേർക്കുക')),
             CheckboxListTile(
@@ -265,7 +274,20 @@ Future<void> _pickPhoto() async {
             FilledButton(
               onPressed: () {
                 if (_form.currentState!.validate() && confirmed) {
-                  ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('രജിസ്ട്രേഷൻ സമർപ്പിച്ചു!')));
+                 workers.add(
+  Worker(
+    nameController.text.trim(),
+    locationController.text.trim(),
+    '${experienceController.text.trim()} വർഷം',
+    phoneController.text.trim(),
+    5.0,
+    serviceController.text.trim(),
+  ),
+);
+
+ScaffoldMessenger.of(context).showSnackBar(
+  const SnackBar(content: Text('രജിസ്ട്രേഷൻ വിജയിച്ചു!')),
+); 
                 } else if (!confirmed) {
                   ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text('ദയവായി confirmation തിരഞ്ഞെടുക്കുക.')));
                 }
@@ -278,9 +300,10 @@ Future<void> _pickPhoto() async {
     );
   }
 
-  Widget _field(String label, IconData icon, {TextInputType? keyboard, int maxLines = 1}) => Padding(
+  Widget _field(String label, IconData icon, TextEditingController controller, {TextInputType? keyboard, int maxLines = 1}) => Padding(
     padding: const EdgeInsets.only(bottom: 12),
     child: TextFormField(
+    controller: controller,
       keyboardType: keyboard,
       maxLines: maxLines,
       validator: (v) => (v == null || v.trim().isEmpty) ? 'ഇത് ആവശ്യമാണ്' : null,
