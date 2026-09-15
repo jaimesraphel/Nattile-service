@@ -279,4 +279,4 @@ class _RegistrationPageState extends State<RegistrationPage> {
       decoration: InputDecoration(labelText: label, prefixIcon: Icon(icon), border: const OutlineInputBorder()),
     ),
   );
-}
+} 
