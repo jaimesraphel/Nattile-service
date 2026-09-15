@@ -107,12 +107,12 @@ class HomePage extends StatelessWidget {
               );
             },
           ),
-          const SizedBox(height: 24),
-          FilledButton.icon(
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RegistrationPage())),
-            icon: const Icon(Icons.handyman),
-            label: const Text('ഞാനും ഒരു Service Provider ആണ്'),
-          ),
+          
+          
+            
+            
+            
+          
         ],
       ),
     );
