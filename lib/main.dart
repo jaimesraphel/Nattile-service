@@ -246,7 +246,7 @@ class _RegistrationPageState extends State<RegistrationPage> {
             _field('എത്ര വർഷത്തെ പരിചയം?', Icons.work, keyboard: TextInputType.number),
             _field('ചെയ്യുന്ന സേവനങ്ങൾ', Icons.handyman, maxLines: 3),
             const SizedBox(height: 8),
-            OutlinedButton.icon(onPressed: () {}, icon: const Icon(Icons.photo_camera), label: const Text('Profile Photo ചേർക്കുക')),
+            OutlinedButton.icon(onPressed: _pickPhoto, icon: const Icon(Icons.photo_camera), label: const Text('Profile Photo ചേർക്കുക')),
             CheckboxListTile(
               contentPadding: EdgeInsets.zero,
               value: confirmed,
