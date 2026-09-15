@@ -227,8 +227,15 @@ class RegistrationPage extends StatefulWidget {
 
 class _RegistrationPageState extends State<RegistrationPage> {
   final _form = GlobalKey<FormState>();
-  bool confirmed = false;
+  bool confirmed = false;XFile? profilePhoto;
+Future<void> _pickPhoto() async {
+  final picker = ImagePicker();
+  final picked = await picker.pickImage(source: ImageSource.gallery);
 
+  if (picked != null) {
+    setState(() => profilePhoto = picked);
+  }
+}
   @override
   Widget build(BuildContext context) {
     return Scaffold(
