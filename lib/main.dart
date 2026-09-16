@@ -33,14 +33,39 @@ class _IntroPageState extends State<IntroPage> {
   void initState() {
     super.initState();
 
-    Future.delayed(const Duration(seconds: 3), () {
-      if (mounted) {
-        Navigator.pushReplacement(
-          context,
-          MaterialPageRoute(builder: (_) => const HomePage()),
-        );
-      }
-    });
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+  Future.delayed(const Duration(seconds: 3), () {
+    if (!mounted) return;
+
+    Navigator.of(context).pushReplacement(
+      MaterialPageRoute(
+        builder: (_) => const HomePage(),
+      ),
+    );
+  });
+});
+
+  
+
+  
+    
+      
+
+      
+        
+          
+        
+      
+    
+  
+}
+      
+        
+          
+          
+      
+      
+    
   }
 
   @override
