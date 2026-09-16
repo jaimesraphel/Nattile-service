@@ -17,11 +17,60 @@ class NattileServiceApp extends StatelessWidget {
         useMaterial3: true,
         fontFamily: 'Roboto',
       ),
-      home: const HomePage(),
+      home: const IntroPage(),
     );
   }
 }
+class IntroPage extends StatefulWidget {
+  const IntroPage({super.key});
 
+  @override
+  State<IntroPage> createState() => _IntroPageState();
+}
+
+class _IntroPageState extends State<IntroPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      if (mounted) {
+        Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (_) => const HomePage()),
+        );
+      }
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: const Color(0xFF0B0F14),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Image.asset(
+              'assets/file_00000000f748211b88633a3fc0e7605.png',
+              width: 260,
+            ),
+            const SizedBox(height: 28),
+            const Text(
+              'BUILD • SERVE • TRUST',
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+                letterSpacing: 3,
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
 class Service {
   final String name, emoji;
   const Service(this.name, this.emoji);
