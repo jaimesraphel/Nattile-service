@@ -214,7 +214,7 @@ final List<Worker> workers = [
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (_) => WorkerListPage(s.name),
+                          builder: (_) => WorkerListPage(service: s.name),
                         ),
                       );
                     }
