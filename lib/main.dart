@@ -124,6 +124,7 @@ final List<Worker> workers = [
   Worker('അനിൽ കുമാർ', 'തൃശൂർ', '8 വർഷം', '9999999999', 4.8, 'പ്ലമ്പർ'),
   Worker('ഷാജി', 'ഒല്ലൂർ', '6 വർഷം', '9888888888', 4.7, 'പ്ലമ്പർ'),
   Worker('രമേഷ്', 'കൂർക്കഞ്ചേരി', '10 വർഷം', '9777777777', 4.9, 'ഇലക്ട്രീഷ്യൻ'),
+  ];
   class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
