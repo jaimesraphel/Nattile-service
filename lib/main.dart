@@ -102,12 +102,15 @@ class Service {
 }
 
 const services = [
-  Service('പ്ലമ്പർ', '🔧'),
+  Service('പ്ലംബർ', '🔧'),
   Service('ഇലക്ട്രീഷ്യൻ', '⚡'),
   Service('A/C & Fridge Technician', '❄️'),
   Service('പെയിന്റർ', '🎨'),
   Service('കാർപ്പെന്റർ', '🪚'),
   Service('Car / Bike Service', '🚗'),
+  Service('Tile Worker', '🧱'),
+  Service('Hand Tool Servicer', '🔧'),
+  Service('Aluminium & Fabrication', '🔩'),
 ];
 
 class Worker {
@@ -387,7 +390,8 @@ class WorkerCard extends StatelessWidget {
 
 class RegistrationPage extends StatefulWidget {
   const RegistrationPage({super.key});
-  @override State<RegistrationPage> createState() => _RegistrationPageState();
+  @override
+State<RegistrationPage> createState() => _RegistrationPageState();
 }
 
 class _RegistrationPageState extends State<RegistrationPage> {
