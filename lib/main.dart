@@ -121,77 +121,167 @@ final List<Worker> workers = [
   Worker('അനിൽ കുമാർ', 'തൃശൂർ', '8 വർഷം', '9999999999', 4.8, 'പ്ലമ്പർ'),
   Worker('ഷാജി', 'ഒല്ലൂർ', '6 വർഷം', '9888888888', 4.7, 'പ്ലമ്പർ'),
   Worker('രമേഷ്', 'കൂർക്കഞ്ചേരി', '10 വർഷം', '9777777777', 4.9, 'ഇലക്ട്രീഷ്യൻ'),
-];
-
-class HomePage extends StatelessWidget {
+  class HomePage extends StatelessWidget {
   const HomePage({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('നാട്ടിലെ Service', style: TextStyle(fontWeight: FontWeight.bold)),
+        title: const Text('നാട്ടിലെ Service'),
         actions: [
           IconButton(
             tooltip: 'Worker Registration',
-            onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const RegistrationPage())),
-            icon: const Icon(Icons.person_add_alt_1),
-          )
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (_) => const RegistrationPage(),
+                ),
+              );
+            },
+            icon: const Icon(Icons.person_add),
+          ),
         ],
       ),
       body: ListView(
         padding: const EdgeInsets.all(16),
         children: [
-          Card(
-            child: ListTile(
-              leading: const Icon(Icons.location_on, color: Colors.green),
-              title: const Text('നിങ്ങളുടെ സ്ഥലം'),
-              subtitle: const Text('തൃശൂർ'),
-              trailing: const Icon(Icons.keyboard_arrow_down),
+          ClipRRect(
+            borderRadius: BorderRadius.circular(20),
+            child: Image.asset(
+              'assets/IMG_20260916_125025.png',
+              height: 230,
+              width: double.infinity,
+              fit: BoxFit.cover,
             ),
           ),
+
           const SizedBox(height: 18),
-          const Text('ഏത് സേവനമാണ് വേണ്ടത്?', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
-          const SizedBox(height: 12),
+
+          const Text(
+            'നിങ്ങളുടെ നാട്ടിലെ സേവനങ്ങൾ',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 22,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+
+          const SizedBox(height: 6),
+
+          const Text(
+            'വിശ്വസിക്കാവുന്ന Service Providers',
+            textAlign: TextAlign.center,
+            style: TextStyle(
+              fontSize: 15,
+            ),
+          ),
+
+          const SizedBox(height: 18),
+
           GridView.builder(
             shrinkWrap: true,
             physics: const NeverScrollableScrollPhysics(),
             itemCount: services.length,
-            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2, crossAxisSpacing: 12, mainAxisSpacing: 12, childAspectRatio: 1.18,
+            gridDelegate:
+                const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              crossAxisSpacing: 12,
+              mainAxisSpacing: 12,
+              childAspectRatio: 1.15,
             ),
             itemBuilder: (context, i) {
               final s = services[i];
+
               return Card(
+                elevation: 3,
                 clipBehavior: Clip.antiAlias,
                 child: InkWell(
                   onTap: () {
                     if (s.name == 'Car / Bike Service') {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => const VehicleChoicePage()));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => const VehicleChoicePage(),
+                        ),
+                      );
                     } else {
-                      Navigator.push(context, MaterialPageRoute(builder: (_) => WorkerListPage(service: s.name)));
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (_) => WorkerListPage(s.name),
+                        ),
+                      );
                     }
                   },
-                  child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
-                    Text(s.emoji, style: const TextStyle(fontSize: 36)),
-                    const SizedBox(height: 8),
-                    Text(s.name, textAlign: TextAlign.center, style: const TextStyle(fontWeight: FontWeight.w600)),
-                  ]),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text(
+                        s.emoji,
+                        style: const TextStyle(fontSize: 38),
+                      ),
+                      const SizedBox(height: 8),
+                      Text(
+                        s.name,
+                        textAlign: TextAlign.center,
+                        style: const TextStyle(
+                          fontSize: 16,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
               );
             },
           ),
-          
-          
-            
-            
-            
-          
         ],
       ),
     );
   }
 }
+
+
+            
+            
+            
+            
+              
+            
+            
+              
+              
+                
+                
+                  
+                    
+                      
+                    
+                      
+                    
+                  
+                  
+                    
+                    
+                    
+                  
+                
+              
+            
+          
+          
+          
+            
+            
+            
+          
+        
+      
+    
+  
+
 
 class VehicleChoicePage extends StatelessWidget {
   const VehicleChoicePage({super.key});
