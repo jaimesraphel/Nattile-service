@@ -39,13 +39,50 @@ class _IntroPageState extends State<IntroPage> {
 
     Navigator.of(context).pushReplacement(
       MaterialPageRoute(
-        builder: (_) => const HomePage(),
+        builder: (_) => const LogoPage(),
       ),
     );
   });
 });
 
-  
+  class LogoPage extends StatefulWidget {
+  const LogoPage({super.key});
+
+  @override
+  State<LogoPage> createState() => _LogoPageState();
+}
+
+class _LogoPageState extends State<LogoPage> {
+  @override
+  void initState() {
+    super.initState();
+
+    Future.delayed(const Duration(seconds: 3), () {
+      if (!mounted) return;
+
+      Navigator.of(context).pushReplacement(
+        MaterialPageRoute(
+          builder: (_) => const HomePage(),
+        ),
+      );
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      backgroundColor: Colors.black,
+      body: Center(
+        child: Image.asset(
+          'assets/file_00000000f748211b88633a3fc0e7605.png',
+          fit: BoxFit.contain,
+          width: double.infinity,
+          height: double.infinity,
+        ),
+      ),
+    );
+  }
+}
 
   
     
