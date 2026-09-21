@@ -131,10 +131,8 @@ class HomePage extends StatelessWidget {
             ),
           ],
         ),
-      ),
-    );
-  }
-}
+      ), 
+      }
 class Service {
   final String name, emoji;
   const Service(this.name, this.emoji);
