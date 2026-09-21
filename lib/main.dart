@@ -104,7 +104,7 @@ class _LogoPageState extends State<LogoPage> {
       
       
     
-  }
+  
 
   @override
   Widget build(BuildContext context) {
