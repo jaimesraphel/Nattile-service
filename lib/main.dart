@@ -45,7 +45,7 @@ class _IntroPageState extends State<IntroPage> {
   });
 });
   }
-
+  }
   class LogoPage extends StatefulWidget {
   const LogoPage({super.key});
 
